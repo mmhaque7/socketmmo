@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var serv = require('http').Server(app)
 var port = process.env.PORT || 2000;
+var socketIO = require("socket.io");
 
 
 app.get('/', function (req, res) {
@@ -44,7 +45,8 @@ var Player = (id) => {
     return self;
 }
 
-var io = require('socket.io')(serv, {});
+//var io = require('socket.io')(serv, {});
+let io = socketIO(serv);
 io.sockets.on('connection', (socket) => {
     socket.id = Math.random();
 
