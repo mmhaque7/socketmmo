@@ -3,7 +3,7 @@ var app = express();
 var serv = require('http').Server(app);
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
+    res.send("<a href='/client'>Click here to play the game!!! still work in progress</a>");
 });
 app.use('/client', express.static(__dirname + '/client'));
 
