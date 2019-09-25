@@ -1,13 +1,16 @@
 var express = require('express');
 var app = express();
-var serv = require('http').Server(app);
+var serv = require('http').Server(app)
+
 
 app.get('/', function (req, res) {
-    res.send("<a href='/client'>Click here to play the game!!! still work in progress</a>");
+    res.sendFile(__dirname + '/client/index.html');
 });
 app.use('/client', express.static(__dirname + '/client'));
 
-serv.listen(process.env.PORT || 8080);
+
+serv.listen(2000);
+console.log("Server started.");
 console.log('server connected');
 
 var SOCKET_LIST = {};
