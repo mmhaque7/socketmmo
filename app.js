@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 });
 app.use('/client', express.static(__dirname + '/client'));
 
-serv.listen(8080);
+serv.listen(process.env.PORT || 8080);
 console.log('server connected');
 
 var SOCKET_LIST = {};
@@ -35,7 +35,7 @@ var Player = (id) => {
         if (self.pressUp)
             self.y -= self.maxSpd;
         if (self.pressDown)
-            self.y = self.maxSpd;
+            self.y += self.maxSpd;
     }
     return self;
 }
