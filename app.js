@@ -1,14 +1,13 @@
-var HTTP_PORT = process.env.PORT || 8080;
 var express = require('express');
 var app = express();
-
+var serv = require('http').Server(app);
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
 app.use('/client', express.static(__dirname + '/client'));
 
-serv.listen(HTTP_PORT);
+serv.listen(8080);
 console.log('server connected');
 
 var SOCKET_LIST = {};
@@ -36,7 +35,7 @@ var Player = (id) => {
         if (self.pressUp)
             self.y -= self.maxSpd;
         if (self.pressDown)
-            self.y += self.maxSpd;
+            self.y = self.maxSpd;
     }
     return self;
 }
